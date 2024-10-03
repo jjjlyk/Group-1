@@ -1,11 +1,11 @@
 import streamlit as st
-import matplotlib.pyplot as plt # type: ignore
+import matplotlib as plt 
 import numpy as np
 import pandas as pd
-import seaborn as sns # type: ignore
+import seaborn as sns 
 import altair as alt
-from wordcloud import WordCloud # type: ignore
-from mpl_toolkits.mplot3d import Axes3D # type: ignore
+from wordcloud import WordCloud
+from mpl_toolkits.mplot3d import Axes3D
 
 st.title("Customer Purchase Behavior")
 st.header("Electronic Sales Data")
