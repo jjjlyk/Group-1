@@ -31,22 +31,6 @@ st.text(df_info_as_string)
 st.write("Show null values")
 st.write(df.isna().sum())
 
-#Description of columns
-st.markdown("""
-
-`Customer ID:`Unique Identifier for each customers
-`Age` Age of the customer
-`Gender` Gender of the customer
-`Loyalty Member` Member status
-`Product Type` Type of electronic product
-`SKU` Unique code for each product
-`Rating` Customer rating of the product
-`Order status` Status of the order
-`Payment Method` Method used for payment (e.g., Credit Card, Bank Transfer, Others)
-`Total Price`Total price of the transcation
-
-""")
-
 #Total number of customers and transactions
 st.subheader("Total number of customers and transactions")
 total_customers = df['Customer ID'].nunique()
