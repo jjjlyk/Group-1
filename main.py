@@ -78,3 +78,19 @@ st.pyplot(plt)
 plt.clf()
 
 st.write("We can see the peak of the rating of the product that ranges between 3.0 and 3.5 and it is somewhat neutral satisfaction with their product.")
+
+st.header("Correlation Between Age and Product Purchases")
+plt.style.use('seaborn')
+
+def plot_age_product_distribution(df):
+    plt.figure(figsize=(12, 6))
+    sns.boxplot(x='Product Type', y='Age', data=df)
+    plt.title('Age Distribution by Product Type')
+    plt.xlabel('Product Type')
+    plt.ylabel('Age')
+    plt.xticks(rotation=45)
+    st.pyplot(plt)
+    plt.clf()
+
+plot_age_product_distribution(df)
+st.write("From this graph, we can infer that all products have a wide age range of customers, suggesting adaptations across generations. However, the boxes are slightly skewed downwards, indicating that the products are purchased slightly more by the younger age ranges. The median age across the customers also fall somewhere between 40s to 50s.")
