@@ -7,6 +7,7 @@ import altair as alt
 from mpl_toolkits.mplot3d import Axes3D
 import networkx as nx
 import plotly.graph_objects as go
+from wordcloud import WordCloud
 from io import StringIO
 
 st.title("Customer Purchase Behavior")
