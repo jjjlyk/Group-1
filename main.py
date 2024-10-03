@@ -131,6 +131,7 @@ plt.grid(True)
 plt.tight_layout()
 
 plt.plot(QuantityMonthDF["Month"].dt.to_timestamp().dt.strftime('%b-%Y'), QuantityMonthDF["Quantity"])
+plt.labels()
 st.pyplot(plt)
 plt.clf()
 
