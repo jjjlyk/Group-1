@@ -46,3 +46,10 @@ st.markdown("""
 `Total Price`Total price of the transcation
 
 """)
+
+#Total number of customers and transactions
+total_customers = df['Customer ID'].nunique()
+st.write(f"Total number of customers: {total_customers}")
+
+total_transactions = len(df)
+st.write(f"Total number of transactions: {total_transactions}")
