@@ -48,6 +48,7 @@ st.markdown("""
 """)
 
 #Total number of customers and transactions
+st.subheader("**Total number of customers and transactions**")
 total_customers = df['Customer ID'].nunique()
 st.write(f"Total number of customers: {total_customers}")
 
