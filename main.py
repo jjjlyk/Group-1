@@ -17,6 +17,8 @@ st.markdown('`by Group 1`')
 # Read our CSV dataset.
 df = pd.read_csv("Electronic_sales.csv")
 
-df
+st.write(df)
 
-df.info()
+buffer = StringIO
+df.info(buf = buffer)
+df_info_as_string = buffer.getvalue()
