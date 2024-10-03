@@ -64,7 +64,6 @@ def bar_plot_product_types(df):
   plt.ylabel('Count')
   st.pyplot(plt)
   plt.clf()
-
 bar_plot_product_types(df)
 st.write("We can see from the given chart the the Smartphone had the highest purchase among the other products.")
 
@@ -76,11 +75,10 @@ plt.ylabel('Count')
 plt.title('Distribution of Ratings')
 st.pyplot(plt)
 plt.clf()
-
 st.write("We can see the peak of the rating of the product that ranges between 3.0 and 3.5 and it is somewhat neutral satisfaction with their product.")
 
+##Box plot of Correlation Between Age and Product Purchases
 st.header("Correlation Between Age and Product Purchases")
-
 def plot_age_product_distribution(df):
     plt.figure(figsize=(12, 6))
     sns.boxplot(x='Product Type', y='Age', data=df)
@@ -93,3 +91,47 @@ def plot_age_product_distribution(df):
 
 plot_age_product_distribution(df)
 st.write("From this graph, we can infer that all products have a wide age range of customers, suggesting adaptations across generations. However, the boxes are slightly skewed downwards, indicating that the products are purchased slightly more by the younger age ranges. The median age across the customers also fall somewhere between 40s to 50s.")
+
+#Payment Methods Visualization
+st.header("Payment Methods Visualization")
+st.subheader("This part aims to visualize what is the common payment method used by the customers.")
+def plot_payment_method_pie():
+    
+    df["Payment Method"] = df["Payment Method"].str.lower().str.strip()  # Convert to lowercase and remove leading/trailing spaces
+
+    payment_data = pd.DataFrame(df["Payment Method"])
+    payment_distribution = payment_data["Payment Method"].value_counts()
+    num_slices = len(payment_distribution)
+    explode = [0.02] * num_slices
+
+    plt.figure(figsize=(6, 6))
+    plt.pie(payment_distribution, labels=payment_distribution.index, autopct='%1.1f%%', startangle=90, colors=['#ff9999', '#66b3ff', '#99ff99', '#c2c2f0', '#ffb3e6', '#c2c2f0', '#ffb3e6'], explode=explode)
+    plt.title('Payment Methods')
+    plt.axis('equal')
+    st.pyplot(plt)
+    plt.clf()
+plot_payment_method_pie()
+
+##Products sold over time
+st.header("Products Sold Over Time")
+df["Date YearMonth"] = pd.to_datetime(df["Purchase Date"]).dt.to_period("M")
+
+QuantityMonthDF = pd.DataFrame({
+    "Month": df["Date YearMonth"].unique()}),
+
+
+QuantityMonthDF.sort_values(by="Month", inplace=True)
+QuantityMonthDF.reset_index(drop=True, inplace=True)
+
+plt.figure(figsize=(12,6))
+plt.title("Products Sold Over Time")
+plt.xlabel('Month')
+plt.ylabel('Quantity Sold')
+plt.grid(True)
+plt.tight_layout()
+
+plt.plot(QuantityMonthDF["Month"].dt.to_timestamp().dt.strftime('%b-%Y'), QuantityMonthDF["Quantity"])
+st.pyplot(plt)
+plt.clf()
+
+print(QuantityMonthDF)
