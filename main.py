@@ -33,7 +33,7 @@ st.write(df.isna().sum())
 
 #Description of columns
 
-st.write ("""
+st.markdown ("""
 `Customer ID` 
 Unique Identifier for each customers
 `Age`
