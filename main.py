@@ -56,7 +56,7 @@ total_transactions = len(df)
 st.write(f"Total number of transactions: {total_transactions}")
 
 #Product Type
-st.header("Product Type")
+st.header("Product Types")
 def bar_plot_product_types(df):
   sns.countplot (x='Product Type', data=df, order=['Smartphone', 'Tablet', 'Laptop', 'Smartwatch', 'Headphones'])
   plt.title('Product Type')
@@ -66,3 +66,15 @@ def bar_plot_product_types(df):
   plt.clf()
 
 bar_plot_product_types(df)
+st.write("We can see from the given chart the the Smartphone had the highest purchase among the other products.")
+
+#Ratings of the product
+st.header("Ratings of the Product")
+plt.hist(df['Rating'], bins=10)
+plt.xlabel('Rating')
+plt.ylabel('Count')
+plt.title('Distribution of Ratings')
+st.pyplot(plt)
+plt.clf()
+
+st.write("We can see the peak of the rating of the product that ranges between 3.0 and 3.5 and it is somewhat neutral satisfaction with their product.")
