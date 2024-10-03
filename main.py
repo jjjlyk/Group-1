@@ -54,3 +54,15 @@ st.write(f"Total number of customers: {total_customers}")
 
 total_transactions = len(df)
 st.write(f"Total number of transactions: {total_transactions}")
+
+#Product Type
+st.header("Product Type")
+def bar_plot_product_types(df):
+  sns.countplot (x='Product Type', data=df, order=['Smartphone', 'Tablet', 'Laptop', 'Smartwatch', 'Headphones'])
+  plt.title('Product Type')
+  plt.xlabel('Product Type')
+  plt.ylabel('Count')
+  st.pyplot(plt)
+  plt.clf()
+
+bar_plot_product_types(df)
