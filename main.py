@@ -15,7 +15,7 @@ st.write("link to the data set: [](https://www.kaggle.com/datasets/cameronseamon
 st.markdown('`by Group 1`')
 
 # Read our CSV dataset.
-df = pd.read_csv("Electronic_sales.csv")
+df = pd.read_csv("dataset/Electronic_sales.csv")
 
 st.write(df)
 
