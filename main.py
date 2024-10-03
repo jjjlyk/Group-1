@@ -34,24 +34,24 @@ st.write(df.isna().sum())
 #Description of columns
 
 st.write ("""
-    `Customer ID`
-        Unique Identifier for each customers
-    `Age`
-        Age of the customer
-    `Gender`
-        Gender of the customer
-    `Loyalty Member`
-        Member status
-    `Product Type`
-        Type of electronic product
-    `SKU`
-        Unique code for each product
-    `Rating`
-        Customer rating of the product
-    `Order status`
-        Status of the order
-    `Payment Method`
-        Method used for payment (e.g., Credit Card, Bank Transfer, Others)
-    `Total Price`
-        Total price of the transcation
-          """)
+`Customer ID` 
+Unique Identifier for each customers
+`Age`
+Age of the customer
+`Gender`
+Gender of the customer
+`Loyalty Member`
+Member status
+`Product Type`
+Type of electronic product
+`SKU`
+Unique code for each product
+`Rating`
+Customer rating of the product
+`Order status`
+Status of the order
+`Payment Method`
+Method used for payment (e.g., Credit Card, Bank Transfer, Others)
+`Total Price`
+Total price of the transcation
+""")
