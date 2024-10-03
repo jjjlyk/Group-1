@@ -35,23 +35,23 @@ st.write(df.isna().sum())
 
 st.write ("""
     `Customer ID`
-    Unique Identifier for each customers
+        Unique Identifier for each customers
     `Age`
-    Age of the customer
+        Age of the customer
     `Gender`
-    Gender of the customer
+        Gender of the customer
     `Loyalty Member`
-    Member status
+        Member status
     `Product Type`
-    Type of electronic product
+        Type of electronic product
     `SKU`
-    Unique code for each product
+        Unique code for each product
     `Rating`
-    Customer rating of the product
+        Customer rating of the product
     `Order status`
-    Status of the order
+        Status of the order
     `Payment Method`
-    Method used for payment (e.g., Credit Card, Bank Transfer, Others)
+        Method used for payment (e.g., Credit Card, Bank Transfer, Others)
     `Total Price`
-    Total price of the transcation
+        Total price of the transcation
           """)
