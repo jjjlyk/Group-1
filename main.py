@@ -80,7 +80,6 @@ plt.clf()
 st.write("We can see the peak of the rating of the product that ranges between 3.0 and 3.5 and it is somewhat neutral satisfaction with their product.")
 
 st.header("Correlation Between Age and Product Purchases")
-plt.style.use('seaborn')
 
 def plot_age_product_distribution(df):
     plt.figure(figsize=(12, 6))
