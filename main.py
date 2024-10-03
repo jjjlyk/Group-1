@@ -1,11 +1,11 @@
 import streamlit as st
-import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt # type: ignore
 import numpy as np
 import pandas as pd
-import seaborn as sns
+import seaborn as sns # type: ignore
 import altair as alt
-from wordcloud import WordCloud
-from mpl_toolkits.mplot3d import Axes3D
+from wordcloud import WordCloud # type: ignore
+from mpl_toolkits.mplot3d import Axes3D # type: ignore
 
 st.title("Customer Purchase Behavior")
 st.header("Electronic Sales Data")
@@ -15,3 +15,5 @@ st.write("link to the data set: [](https://www.kaggle.com/datasets/cameronseamon
 df = pd.read_csv("Electronic_sales.csv")
 
 df
+
+df.info()
