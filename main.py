@@ -22,3 +22,5 @@ st.write(df)
 buffer = StringIO
 df.info(buf = buffer)
 df_info_as_string = buffer.getvalue()
+st.write("Data Types")
+st.text(df_info_as_string)
