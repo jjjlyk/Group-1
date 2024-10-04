@@ -140,3 +140,38 @@ def product_sold_over_time (df):
 
 product_sold_over_time(df);
 
+
+## Purchasing Statistics of Loyalty and Non-Loyalty Members
+st.header("Purchasing Statistics of Loyalty and Non-Loyalty Members")
+
+def purchasing_statistics_of_loyalty_and_nonloyalty_members ():
+    labels = ["Smartphones","Tablets","Laptops","Smartwatches","Headphones"]
+    smartphone_purchases_loyalty = pd.merge(df[df["Loyalty Member"] == "Yes"], df[df["Order Status"] == "Completed"]).groupby("Product Type")["Quantity"].mean()["Smartphone"]
+    tablet_purchases_loyalty = pd.merge(df[df["Loyalty Member"] == "Yes"], df[df["Order Status"] == "Completed"]).groupby("Product Type")["Quantity"].mean()["Tablet"]
+    laptop_purchases_loyalty = pd.merge(df[df["Loyalty Member"] == "Yes"], df[df["Order Status"] == "Completed"]).groupby("Product Type")["Quantity"].mean()["Laptop"]
+    smartwatch_purchases_loyalty = pd.merge(df[df["Loyalty Member"] == "Yes"], df[df["Order Status"] == "Completed"]).groupby("Product Type")["Quantity"].mean()["Smartwatch"]
+    headphones_purchases_loyalty = pd.merge(df[df["Loyalty Member"] == "Yes"], df[df["Order Status"] == "Completed"]).groupby("Product Type")["Quantity"].mean()["Headphones"]
+
+    smartphone_purchases_nonloyalty = pd.merge(df[df["Loyalty Member"] == "No"], df[df["Order Status"] == "Completed"]).groupby("Product Type")["Quantity"].mean()["Smartphone"]
+    tablet_purchases_nonloyalty = pd.merge(df[df["Loyalty Member"] == "No"], df[df["Order Status"] == "Completed"]).groupby("Product Type")["Quantity"].mean()["Tablet"]
+    laptop_purchases_nonloyalty = pd.merge(df[df["Loyalty Member"] == "No"], df[df["Order Status"] == "Completed"]).groupby("Product Type")["Quantity"].mean()["Laptop"]
+    smartwatch_purchases_nonloyalty = pd.merge(df[df["Loyalty Member"] == "No"], df[df["Order Status"] == "Completed"]).groupby("Product Type")["Quantity"].mean()["Smartwatch"]
+    headphones_purchases_nonloyalty = pd.merge(df[df["Loyalty Member"] == "No"], df[df["Order Status"] == "Completed"]).groupby("Product Type")["Quantity"].mean()["Headphones"]
+
+    loyalty_members_stats = [smartphone_purchases_loyalty, tablet_purchases_loyalty, laptop_purchases_loyalty, smartwatch_purchases_loyalty, headphones_purchases_loyalty]
+    nonloyalty_members_stats = [smartphone_purchases_nonloyalty, tablet_purchases_nonloyalty, laptop_purchases_nonloyalty, smartwatch_purchases_nonloyalty, headphones_purchases_nonloyalty]
+
+    x = range(len(labels))
+    width = 0.2
+
+    plt.bar([x - width/2 for x in range(len(labels))], loyalty_members_stats, width, label='Loyalty Members')
+    plt.bar([x + width/2 for x in range(len(labels))], nonloyalty_members_stats, width, label='Non-Loyalty Members')
+
+    plt.xlabel('Product Type')
+    plt.ylabel('Number of Purchases On Average')
+    plt.title('Product Purchases by Loyalty and Non-Loyalty Members')
+    plt.xticks(x, labels)
+    plt.yticks([1,2,3,4,5,6,7,8,9,10])
+    plt.legend()
+    st.pyplot(plt)
+    plt.clf()
