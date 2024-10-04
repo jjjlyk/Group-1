@@ -135,6 +135,6 @@ def product_sold_over_time (df):
     plt.plot(QuantityMonthDF["Month"].dt.to_timestamp().dt.strftime('%b-%Y'), QuantityMonthDF["QuantityLaptop"], label = "Laptop")
     plt.plot(QuantityMonthDF["Month"].dt.to_timestamp().dt.strftime('%b-%Y'), QuantityMonthDF["QuantitySmartwatch"], label = "Smartwatch")
     plt.plot(QuantityMonthDF["Month"].dt.to_timestamp().dt.strftime('%b-%Y'), QuantityMonthDF["QuantityHeadphones"], label = "Headphones")
-    st.pyplot(plt);
+    st.pyplot(plt)
     plt.clf()
 
