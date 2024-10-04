@@ -16,7 +16,10 @@ st.write("link to the data set: [Customer Purchase Behavior - Electornic Sales D
 st.markdown('`by Group 1`')
 
 # Read our CSV dataset.
-df = pd.read_csv("dataset/Electronic_sales.csv")
+
+#import os
+#print(os.getcwd())
+df = pd.read_csv("dataset\Electronic_sales.csv")
 
 st.write(df)
 
@@ -138,4 +141,3 @@ plt.legend()
 
 print(QuantityMonthDF)
 st.write("Observing the chart, we can see that the sales of tech gadgets has experienced peaks and lows over the course of several months. It has experienced lows in October 2023, March 2024, and August 2024, while its peaks was at Decemeber 2023 and May to July 2024.")
-
