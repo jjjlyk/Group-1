@@ -138,4 +138,5 @@ def product_sold_over_time (df):
     st.pyplot(plt)
     plt.clf()
 
+product_sold_over_time(df);
 
