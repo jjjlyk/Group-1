@@ -99,46 +99,42 @@ def plot_payment_method_pie():
     plt.clf()
 plot_payment_method_pie()
 
+
+
 ##Products sold over time
 st.header("Products Sold Over Time")
-df["Date YearMonth"] = pd.to_datetime(df["Purchase Date"]).dt.to_period("M")
+def product_sold_over_time (df):
+    df["Date YearMonth"] = pd.to_datetime(df["Purchase Date"]).dt.to_period("M")
+    QuantityMonthDF = pd.DataFrame({
+        "Month": df["Date YearMonth"].unique(),
+        "QuantitySmartphone": list(pd.merge(df[df["Product Type"] == "Smartphone"], df[df["Order Status"] == "Completed"]).groupby("Date YearMonth")["Quantity"].sum()),
+        "QuantityTablet": list(pd.merge(df[df["Product Type"] == "Tablet"], df[df["Order Status"] == "Completed"]).groupby("Date YearMonth")["Quantity"].sum()),
+        "QuantityLaptop": list(pd.merge(df[df["Product Type"] == "Laptop"], df[df["Order Status"] == "Completed"]).groupby("Date YearMonth")["Quantity"].sum()),
+        "QuantitySmartwatch": list(pd.merge(df[df["Product Type"] == "Smartwatch"], df[df["Order Status"] == "Completed"]).groupby("Date YearMonth")["Quantity"].sum())})
 
-QuantityMonthDF = pd.DataFrame({
-    "Month": df["Date YearMonth"].unique(),
-    "QuantitySmartphone": list(pd.merge(df[df["Product Type"] == "Smartphone"], df[df["Order Status"] == "Completed"]).groupby("Date YearMonth")["Quantity"].sum()),
-    "QuantityTablet": list(pd.merge(df[df["Product Type"] == "Tablet"], df[df["Order Status"] == "Completed"]).groupby("Date YearMonth")["Quantity"].sum()),
-    "QuantityLaptop": list(pd.merge(df[df["Product Type"] == "Laptop"], df[df["Order Status"] == "Completed"]).groupby("Date YearMonth")["Quantity"].sum()),
-    "QuantitySmartwatch": list(pd.merge(df[df["Product Type"] == "Smartwatch"], df[df["Order Status"] == "Completed"]).groupby("Date YearMonth")["Quantity"].sum())})
+    months = QuantityMonthDF["Month"].to_frame(name="Month")
+    hdps = pd.merge(df[df["Product Type"] == "Headphones"], df[df["Order Status"] == "Completed"]).groupby("Date YearMonth")["Quantity"].sum()
+    merged_df = pd.merge(months, hdps, left_on="Month", right_on="Date YearMonth", how="left").fillna(0)
+    QuantityMonthDF["QuantityHeadphones"] = list(merged_df["Quantity"].astype(int))
 
-months = QuantityMonthDF["Month"].to_frame(name="Month")
-hdps = pd.merge(df[df["Product Type"] == "Headphones"], df[df["Order Status"] == "Completed"]).groupby("Date YearMonth")["Quantity"].sum()
-merged_df = pd.merge(months, hdps, left_on="Month", right_on="Date YearMonth", how="left").fillna(0)
-QuantityMonthDF["QuantityHeadphones"] = list(merged_df["Quantity"].astype(int))
+    QuantityMonthDF["QuantityTotal"] = QuantityMonthDF[["QuantitySmartphone", "QuantityTablet", "QuantityLaptop", "QuantitySmartwatch", "QuantityHeadphones"]].sum(axis=1)
+    QuantityMonthDF.sort_values(by="Month", inplace=True)
+    QuantityMonthDF.reset_index(drop=True, inplace=True)
 
-QuantityMonthDF["QuantityTotal"] = QuantityMonthDF[["QuantitySmartphone", "QuantityTablet", "QuantityLaptop", "QuantitySmartwatch", "QuantityHeadphones"]].sum(axis=1)
+    plt.figure(figsize=(12,6))
+    plt.title("Products Sold Over Time")
+    plt.xlabel('Month')
+    plt.ylabel('Quantity Sold')
+    plt.yticks(ticks=[0,1000,2000,3000,4000,5000,6000,7000,8000,9000,10000])
+    plt.grid(True)
+    plt.tight_layout()
 
-# Cancelled orders have been excluded
+    plt.plot(QuantityMonthDF["Month"].dt.to_timestamp().dt.strftime('%b-%Y'), QuantityMonthDF["QuantityTotal"], label = "Total")
+    plt.plot(QuantityMonthDF["Month"].dt.to_timestamp().dt.strftime('%b-%Y'), QuantityMonthDF["QuantitySmartphone"], label = "Smartphones")
+    plt.plot(QuantityMonthDF["Month"].dt.to_timestamp().dt.strftime('%b-%Y'), QuantityMonthDF["QuantityTablet"], label = "Tablet")
+    plt.plot(QuantityMonthDF["Month"].dt.to_timestamp().dt.strftime('%b-%Y'), QuantityMonthDF["QuantityLaptop"], label = "Laptop")
+    plt.plot(QuantityMonthDF["Month"].dt.to_timestamp().dt.strftime('%b-%Y'), QuantityMonthDF["QuantitySmartwatch"], label = "Smartwatch")
+    plt.plot(QuantityMonthDF["Month"].dt.to_timestamp().dt.strftime('%b-%Y'), QuantityMonthDF["QuantityHeadphones"], label = "Headphones")
+    st.pyplot(plt);
+    plt.clf()
 
-QuantityMonthDF.sort_values(by="Month", inplace=True)
-QuantityMonthDF.reset_index(drop=True, inplace=True)
-
-plt.figure(figsize=(12,6))
-plt.title("Products Sold Over Time")
-plt.xlabel('Month')
-plt.ylabel('Quantity Sold')
-plt.yticks(ticks=[0,1000,2000,3000,4000,5000,6000,7000,8000,9000,10000])
-plt.grid(True)
-plt.tight_layout()
-
-plt.plot(QuantityMonthDF["Month"].dt.to_timestamp().dt.strftime('%b-%Y'), QuantityMonthDF["QuantityTotal"], label = "Total")
-plt.plot(QuantityMonthDF["Month"].dt.to_timestamp().dt.strftime('%b-%Y'), QuantityMonthDF["QuantitySmartphone"], label = "Smartphones")
-plt.plot(QuantityMonthDF["Month"].dt.to_timestamp().dt.strftime('%b-%Y'), QuantityMonthDF["QuantityTablet"], label = "Tablet")
-plt.plot(QuantityMonthDF["Month"].dt.to_timestamp().dt.strftime('%b-%Y'), QuantityMonthDF["QuantityLaptop"], label = "Laptop")
-plt.plot(QuantityMonthDF["Month"].dt.to_timestamp().dt.strftime('%b-%Y'), QuantityMonthDF["QuantitySmartwatch"], label = "Smartwatch")
-plt.plot(QuantityMonthDF["Month"].dt.to_timestamp().dt.strftime('%b-%Y'), QuantityMonthDF["QuantityHeadphones"], label = "Headphones")
-plt.legend()
-
-
-print(QuantityMonthDF)
-st.write("Observing the chart, we can see that the sales of tech gadgets has experienced peaks and lows over the course of several months. It has experienced lows in October 2023, March 2024, and August 2024, while its peaks was at Decemeber 2023 and May to July 2024.")
-##testing
