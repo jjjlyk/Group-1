@@ -139,6 +139,7 @@ def product_sold_over_time (df):
     plt.clf()
 
 product_sold_over_time(df);
+st.write("Observing the chart, we can see that the sales of tech gadgets has experienced peaks and lows over the course of several months. It has experienced lows in October 2023, March 2024, and August 2024, while its peaks was at Decemeber to January 2023 and May to July 2024. Most of the products follow the general trend, with Smartphones being the most popular. However, headphones only began selling in 2024, and its sales were consistent unlike the others which experiences extreme highs and lows.")
 
 
 ## Purchasing Statistics of Loyalty and Non-Loyalty Members
@@ -177,3 +178,4 @@ def purchasing_statistics_of_loyalty_and_nonloyalty_members (df):
     plt.clf()
 
 purchasing_statistics_of_loyalty_and_nonloyalty_members(df)
+st.write("Observing this graph, we can see that Loyalty and Non-Loyalty Members don't have a significant difference in their product puchases on average. Loyalty Members slightly purchases more Tablets and Headphones than Non-Loyalty Members, and Non-Loyalty Members slightly purchases more Smartphones, Laptops, and Smartwatches.")
