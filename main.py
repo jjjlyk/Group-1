@@ -179,3 +179,50 @@ def purchasing_statistics_of_loyalty_and_nonloyalty_members (df):
 
 purchasing_statistics_of_loyalty_and_nonloyalty_members(df)
 st.write("Observing this graph, we can see that Loyalty and Non-Loyalty Members don't have a significant difference in their product puchases on average. Loyalty Members slightly purchases more Tablets and Headphones than Non-Loyalty Members, and Non-Loyalty Members slightly purchases more Smartphones, Laptops, and Smartwatches.")
+
+
+##Gender of the Customers & the Products Bought
+st.header("Gender of the Customers & the Products Bought")
+def gender_of_the_customers_and_the_product_they_bought(df):
+
+    gender_product_counts = df.groupby(['Gender', 'Product Type'])['Product Type'].count().unstack()
+
+    plt.figure(figsize=(10, 6))
+    gender_product_counts.plot(kind='bar', stacked=True)
+    plt.title('Gender of Customers & the Products They Bought')
+    plt.xlabel('Gender')
+    plt.ylabel('Number of Purchases')
+    plt.xticks(rotation=0)
+    plt.legend(title='Product')
+    plt.tight_layout()
+    st.pyplot(plt)
+    plt.clf()
+
+gender_of_the_customers_and_the_product_they_bought(df)
+st.write("Stacked bars represent different product types within each gender category, allowing for comparison of total purchases and insights into product preferences. For instance, if one gender has a significantly taller bar, it indicates higher purchasing activity, while the segments reveal which products are favored by each gender, informing marketing strategies and inventory decisions.")
+
+
+##Add-ons Purchased
+st.header("Add-ons Purchased")
+
+def add_ons_puchased(df):
+    # Add-on names and their corresponding purchase counts from your dataset
+    add_on_names = ['Impulse Item', 'Accessory', 'Extended Warranty', 'Impulse Item (Extra)', 'Accessory (Extra)', 'Extended Warranty (Extra)']
+    add_on_counts = [7686, 7561, 7440, 2548, 2487, 2535]  # Main counts followed by additional entries
+
+    # Define a list of colors for each bar
+    colors = ['skyblue', 'lightgreen', 'salmon', 'gold', 'lightcoral', 'lightpink']
+
+    # Create a bar plot with different colors
+    plt.figure(figsize=(12, 6))
+    plt.bar(add_on_names, add_on_counts, color=colors)
+    plt.title('Add-ons Purchased')
+    plt.xlabel('Add-ons')
+    plt.ylabel('Number of Purchases')
+    plt.xticks(rotation=45)
+    plt.tight_layout()
+    st.pyplot(plt)
+    plt.clf()
+
+add_ons_puchased(df)
+st.write("The plot is initialized with specific dimensions, and titles and labels are added for better context. X-axis labels are rotated for improved readability, and the layout is adjusted for a clean presentation.")
