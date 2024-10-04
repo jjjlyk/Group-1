@@ -78,7 +78,7 @@ st.write("From this graph, we can infer that all products have a wide age range 
 
 #Payment Methods Visualization
 st.header("Payment Methods Visualization")
-st.subheader("This part aims to visualize what is the common payment method used by the customers.")
+st.write("This part aims to visualize what is the common payment method used by the customers.")
 def plot_payment_method_pie():
     
     df["Payment Method"] = df["Payment Method"].str.lower().str.strip()  # Convert to lowercase and remove leading/trailing spaces
