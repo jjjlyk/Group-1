@@ -19,7 +19,7 @@ st.markdown('`by Group 1`')
 
 #import os
 #print(os.getcwd())
-df = pd.read_csv("dataset\Electronic_sales.csv")
+df = pd.read_csv("dataset/Electronic_sales.csv")
 
 st.write(df)
 
