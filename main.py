@@ -299,7 +299,7 @@ st.markdown("""
 
 5. ***Quantity of Products Sold Over Time***. Based on the data, the sales of tech gadgets have experienced peaks and lows over the course of several months. It has experienced lows in October 2023, March 2024, and August 2024, while its peaks was at December 2023 and May to July 2024.
 
-6.***  ***
+6.***Purchasing Statistics of Loyalty and Non-Loyalty Members***. Observing this graph, we can see that Loyalty and Non-Loyalty Members don't have a significant difference in their product puchases on average.
 
 7. ***Gender of the Customers & the Products Bought***. Stacked bars represent different product types within each gender category, allowing for comparison of total purchases and insights into product preferences. For instance, if one gender has a significantly taller bar, it indicates higher purchasing activity, while the segments reveal which products are favored by each gender, informing marketing strategies and inventory decisions.
 
