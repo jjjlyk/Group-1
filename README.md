@@ -57,4 +57,12 @@ FILES
 - Electronic_sales.csv
 - Data Visualizations
 - Python Codes
-  
+
+
+
+
+Jelyka Dizon - 2023100279 - jjlyk
+Erika Mariano - 2023103748 - Erika-Mariano
+Sophia Olandag - 2023108099 - Solandag
+Gabriel Loslos - 2023105846 - gabrieljamesbenedict
+Thomas Kaden Zerda - 2023105726 - kades321
