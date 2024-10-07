@@ -253,7 +253,7 @@ def bar_plot_total_price_and_addons(df):
 
 # Call the function with the DataFrame
 bar_plot_total_price_and_addons(df)
-st.write("")
+st.write("The plot is initialized with specific dimensions, and titles and labels are added for better context. X-axis labels are rotated for improved readability, and the layout is adjusted for a clean presentation.")
 
 
 ##Shipping Type
@@ -283,4 +283,4 @@ def shipping_type(df):
 
 # Call the function with the DataFrame
 shipping_type(df)
-st.write("")
+st.write("Based on the chart, it shows a various range of shipping preferences of customers that is varied on their budget and priorities when purchasing electronics.")
