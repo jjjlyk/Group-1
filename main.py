@@ -13,7 +13,7 @@ from io import StringIO
 st.title("Customer Purchase Behavior")
 st.header("Electronic Sales Data")
 st.write("link to the data set: [Customer Purchase Behavior - Electornic Sales Data via Kaggle](https://www.kaggle.com/datasets/cameronseamons/electronic-sales-sep2023-sep2024?fbclid=IwZXh0bgNhZW0CMTEAAR1m9hzGHXXRPAO7gVhMfL-rGpGiEJWvKSazkSzZk1lNeZqCp2LlhLLZfZQ_aem_d7rG1iddZ9T4F96wYst2FQ)")
-st.markdown('`by Group 1 BM4`')
+st.markdown('`by Group 1`')
 
 # Read our CSV dataset.
 
