@@ -284,3 +284,30 @@ def shipping_type(df):
 # Call the function with the DataFrame
 shipping_type(df)
 st.write("Based on the chart, it shows a various range of shipping preferences of customers that is varied on their budget and priorities when purchasing electronics.")
+
+st.header("Conclusion")
+st.markdown("""
+
+
+1. ***Correlation between product type and age***. The data points to the products having a wide, multi-generational range, however, it indicates slightly that products are more purchased by the younger age ranges.
+
+2. ***Usual payment method***. The data points to customers preferring newer methods of payment, ie. through credit card and Paypal.
+
+3. ***Product type***. In the given data, the customers prefer purchasing smartphones over other products (e.g., Tablet, Smartwatches, Headphones)
+
+4. ***Ratings of the product***. From the data, the ratings of the product (1-5 stars) shows that it falls in the neutral satisfactory of the product.
+
+5. ***Quantity of Products Sold Over Time***. Based on the data, the sales of tech gadgets have experienced peaks and lows over the course of several months. It has experienced lows in October 2023, March 2024, and August 2024, while its peaks was at December 2023 and May to July 2024.
+
+6.***  ***
+
+7. ***Gender of the Customers & the Products Bought***. Stacked bars represent different product types within each gender category, allowing for comparison of total purchases and insights into product preferences. For instance, if one gender has a significantly taller bar, it indicates higher purchasing activity, while the segments reveal which products are favored by each gender, informing marketing strategies and inventory decisions.
+
+8. ***Add-ons Purchased***. The plot is initialized with specific dimensions, and titles and labels are added for better context. X-axis labels are rotated for improved readability, and the layout is adjusted for a clean presentation.
+
+9. ***Comparison of Total Price and Add-on Total by Product Type***. The chart shows the preferences of the customer’s add-ons and can suggest areas for potential growth.
+
+10. ***Quantity of Products Shipped by Shipping Type***. The chart reveals the preferences of the customer in terms of various delivery time demands.
+
+
+""")
