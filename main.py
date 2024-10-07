@@ -226,3 +226,61 @@ def add_ons_puchased(df):
 
 add_ons_puchased(df)
 st.write("The plot is initialized with specific dimensions, and titles and labels are added for better context. X-axis labels are rotated for improved readability, and the layout is adjusted for a clean presentation.")
+
+
+##Comparison of Total Price and Add-On by Product Type
+st.header("Comparison of Total Price and Add-On by Product Type")
+
+def bar_plot_total_price_and_addons(df):
+    # Group by Product Type and sum Total Price and Add-on Total
+    total_by_product = df.groupby('Product Type').agg({'Total Price': 'sum', 'Add-on Total': 'sum'}).reset_index()
+
+    # Melt the DataFrame for easier plotting with seaborn
+    total_melted = total_by_product.melt(id_vars='Product Type', value_vars=['Total Price', 'Add-on Total'],
+                                           var_name='Price Type', value_name='Amount')
+
+    # Create a bar plot
+    plt.figure(figsize=(12, 6))
+    sns.barplot(x='Product Type', y='Amount', hue='Price Type', data=total_melted, palette='viridis')
+    plt.title('Comparison of Total Price and Add-on Total by Product Type')
+    plt.xlabel('Product Type')
+    plt.ylabel('Amount')
+    plt.xticks(rotation=45)
+    plt.grid(axis='y')
+    plt.tight_layout()
+    st.pyplot(plt)
+    plt.clf()
+
+# Call the function with the DataFrame
+bar_plot_total_price_and_addons(df)
+st.write("")
+
+
+##Shipping Type
+st.header("Shipping Type")
+
+def shipping_type(df):
+    # Extract relevant columns
+    shipping_types = df['Shipping Type']  # Adjust the column name as necessary
+    quantities = df['Quantity']            # Adjust the column name as necessary
+
+    # Define a list of colors for each shipping type
+    colors = ['skyblue', 'salmon', 'lightgreen', 'lightcoral', 'lightpink', 'gold']  # Add more colors as needed
+
+    # Create a bar plot with different colors
+    plt.figure(figsize=(10, 6))
+    plt.bar(shipping_types, quantities, color=colors)
+    plt.title('Quantity by Shipping Type')
+    plt.xlabel('Shipping Type')
+    plt.ylabel('Quantity')
+    plt.xticks(rotation=45)
+    plt.tight_layout()
+
+    # Show the chart
+    plt.grid(axis='y')
+    st.pyplot(plt)
+    plt.clf()
+
+# Call the function with the DataFrame
+shipping_type(df)
+st.write("")
